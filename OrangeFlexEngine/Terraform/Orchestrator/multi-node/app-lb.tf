@@ -1,9 +1,16 @@
+### Getting some data first
+data "flexibleengine_vpc_v1" "vpc" {
+    name = "${var.vpc_name}"  
+}
+
+
+
 #### Load balancer
 resource "flexibleengine_elb_loadbalancer" "orchestratorlb" {
   name = "uipath"
   type = "External"
   description = "Front Of Orchestrators"
-  vpc_id =  "${flexibleengine_vpc_v1.uipath.id}"
+  vpc_id =  data.flexibleengine_vpc_v1.vpc.id
   admin_state_up = true
   bandwidth = 100
   vip_address = "${var.vip}"

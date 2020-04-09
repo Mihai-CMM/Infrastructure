@@ -7,8 +7,12 @@ resource "flexibleengine_compute_instance_v2" "basic" {
     count           = "${var.orchestrator_count}"
 
     network {
-        uuid        = "${flexibleengine_vpc_subnet_v1.subnet_uipath.id}"
+        uuid        = "${data.flexibleengine_vpc_subnet_v1.subnet_v1.id}"
       }
     user_data       = "${data.template_file.init.rendered}"
-    depends_on      = ["flexibleengine_nat_snat_rule_v2.snat_uipath"]
+  lifecycle {
+    ignore_changes = ["user_data"]
+  }
+
+
     }

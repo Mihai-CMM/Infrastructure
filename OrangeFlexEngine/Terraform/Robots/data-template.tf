@@ -46,6 +46,7 @@ data "template_file" "init" {
     New-Item -Path "C:\Temp" -Name "log" -ItemType "directory"
     Set-Location -Path $temp
     Set-ExecutionPolicy Unrestricted -force
+    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
     Invoke-WebRequest -Uri $link -OutFile $file
     & C:\Temp\Install-UiRobot.ps1 -orchestratorUrl '${var.orchestrator_url}' -Tennant '${var.tennant}' -orchAdmin '${var.api_user}' -orchPassword '${var.api_user_password}' -adminUsername '${var.robot_local_account}' -machinePassword '${var.robot_local_account_password}' -HostingType 'Standard' -RobotType '${var.robot_type}' -credType 'Default'
     Remove-Item -LiteralPath "C:\scripts" -Force -Recurse

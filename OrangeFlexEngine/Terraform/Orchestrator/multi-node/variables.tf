@@ -2,11 +2,6 @@
 ## check this link for sizing https://docs.uipath.com/orchestrator/docs/hardware-requirements-orchestrator#section-support-between-250-and-500-unattended-robots
 
 
-##VIP in front of Orchestrators
-
-variable "vip" {} ##taken from env TF_VAR.... style
-
-
 #### Openstack router aka VPC in FE terminalogy
 variable "vpc_name" {
   default = "uipath"
@@ -30,18 +25,30 @@ variable "subnet_gateway_ip" {
 }
 
 
-###
-
-
-
-###
-
+variable "nat_floating_ip_id" {
+     default = "27df535a-33c4-45de-9a56-3c8e0b3506c0"
+## IP needs to be created from webUI and ID collected - used for internet access 
+}
 
 variable "default_sec_group" {
-    default = "1b922846-de33-4907-a1b1-685c0e9f3259"
+    default = "084c7fde-8297-434d-a6f4-a7572f9de251"
 ## Manually created from webui -- ATM - needs to be dynamically collected
 
 }
+
+
+
+
+
+
+##VIP in front of Orchestrators
+
+variable "vip" {
+   default = "90.84.180.153"
+## Needs to be created manually in webui
+} 
+
+
 
 ##### Script Related Resources #####
 
@@ -64,7 +71,7 @@ variable "orchestrator_passphrase" {
 
 variable "orchestrator_license" {
   description = "Orchestrator license code. The license created with regutil."
-  default     = "TheLicenseCreatedwithRegUtil"
+  default     = "0821-6423-6082-0021"
 }
 
 variable "orchestrator_versions" {
@@ -78,14 +85,13 @@ variable "orchestrator_versions" {
   # "18.4.3"
   # "18.4.2"
   # "18.4.1"
-  default = "19.4.4"
+  default = "19.10.18"
 
 }
 
 variable  "win_image" {
-  #  default = "666078e1-a0fe-48c6-953e-098008c4c722"
-    default = "d34455d4-c48d-42f2-b9d4-dcbc73e2aa11"
 
+    default = "3574137b-00b9-4ba1-b295-dcf93c321271"
 }
 
 variable "win_flavor" {
@@ -96,17 +102,7 @@ variable "orchestrator_count" {
      default = 2
 }
 
-######## ElastiCache - REDIS ######
 
-variable "elasticache" {
-  description = "Tag name of the ElastiCache - Redis."
-  default = "UiPath-Redis"
-}
-
-variable "redis_password" {
-  description = "Used to create redis instance"
-  default     = "CatsiCumreayu8"
-}
 ########  RDS DB #########
 
 # Database username
@@ -149,4 +145,25 @@ variable "rds_instance_class" {
   default = "rds.mssql.c2.4xlarge.ha"
 ##  default = "rds.mssql.s1.4xlarge.ha"  # 16 vCPUs 64 GB
 ## can be also rds.mssql.c2.4xlarge.ha | 16 vCPUs | 32 GB
+}
+
+### Redis HAA
+variable "centos_image" {
+    default = "8cf64c54-a84d-4089-b73c-6a1e30529e87"
+}
+
+######## High Availability Add-on ######
+variable "haa-user" {
+  description = "High Availability Add-on username. Type email."
+  default = "test@corp.com"
+}
+
+variable "haa-password" {
+  description = "High Availability Add-on username password."
+  default = "123456"
+}
+
+variable "haa-license" {
+  description = "High Availability Add-on license key."
+  default = "2353tgewsdfweg34t342rftg23g2g23t2r32r2353tgewsdfweg34t342rftg23g2g23t2r32r2353tgewsdfweg34t342rftg23g2g23t2r32r2353tgewsdfweg34t342rftg23g2g23t2r32r"
 }

@@ -9,7 +9,7 @@ variable "win_flavor" {
 
 variable  "win_image" {
     description = "Robot ECS Windows version - Win2016 "
-    default = "d34455d4-c48d-42f2-b9d4-dcbc73e2aa11"
+    default = "3574137b-00b9-4ba1-b295-dcf93c321271"
 }
 
 variable "instance_count" {
@@ -68,7 +68,7 @@ variable "subnet_gateway_ip" {
 ##### Orchestrator parameters ####
 variable "orchestrator_url" {
   description = "URL of an existing and licensed Orchestrator."
-  default = "http://cloud.uipath.orange.ro"
+  default = "http://90.84.180.153"
 }
 
 variable "tennant" {
@@ -109,6 +109,6 @@ variable "robot_local_account_role" {
 
 ###Security
 variable "default_sec_group" {
-    default = "1b922846-de33-4907-a1b1-685c0e9f3259"
+    default = "084c7fde-8297-434d-a6f4-a7572f9de251"
 ## Manually created from webui -- ATM - needs to be dynamically collected
 }

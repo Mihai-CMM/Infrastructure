@@ -11,8 +11,8 @@ resource "flexibleengine_rds_instance_v3" "uipathdb" {
   }
   name         = "${var.db_name}"
   security_group_id = "${var.default_sec_group}"
-  subnet_id    = "${flexibleengine_vpc_subnet_v1.subnet_uipath.id}"
-  vpc_id       = "${flexibleengine_vpc_v1.uipath.id}"
+  subnet_id    = "${data.flexibleengine_vpc_subnet_v1.subnet_v1.id}"
+  vpc_id       = "${data.flexibleengine_vpc_v1.vpc.id}"
   volume {
     type       = "${var.mssql_storage_type}"
     size       = "${var.rds_allocated_storage}"
