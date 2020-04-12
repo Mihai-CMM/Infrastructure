@@ -10,6 +10,8 @@ Steps to provision Orchestrator on FE:
 7. Check the plan of the resources to be deployed and type ` yes ` if you agree with the plan.` terrafrom apply `
 8. Wait 20-30 mins and enjoy! The password of the Orchestrator is the password used to ` orchestrator_password ` variable.
 
+Note: With latest Uipath verion you need to use Windows 2019 or preabake a 2016 version with .net framework 4.7.2 before using teraform scripts
+
 ## Terraform version
 Terraform v0.12.12
 

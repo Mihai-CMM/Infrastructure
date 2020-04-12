@@ -44,7 +44,7 @@ variable "default_sec_group" {
 ##VIP in front of Orchestrators
 
 variable "vip" {
-   default = "90.84.180.153"
+   default = "90.84.244.228"
 ## Needs to be created manually in webui
 } 
 
@@ -85,13 +85,14 @@ variable "orchestrator_versions" {
   # "18.4.3"
   # "18.4.2"
   # "18.4.1"
-  default = "19.10.18"
+  default = "19.10.15"
 
 }
 
 variable  "win_image" {
 
-    default = "3574137b-00b9-4ba1-b295-dcf93c321271"
+   # default = "3574137b-00b9-4ba1-b295-dcf93c321271"
+    default = "74eea584-4111-4bcc-82c3-da2ef20ebbda"
 }
 
 variable "win_flavor" {
@@ -142,7 +143,7 @@ variable "rds_allocated_storage" {
 # The instance size type of the RDS instance.
 variable "rds_instance_class" {
   description = "Instance size type of the RDS instance."
-  default = "rds.mssql.c2.4xlarge.ha"
+  default = "rds.mssql.c2.8xlarge.ha"
 ##  default = "rds.mssql.s1.4xlarge.ha"  # 16 vCPUs 64 GB
 ## can be also rds.mssql.c2.4xlarge.ha | 16 vCPUs | 32 GB
 }
@@ -165,5 +166,5 @@ variable "haa-password" {
 
 variable "haa-license" {
   description = "High Availability Add-on license key."
-  default = "2353tgewsdfweg34t342rftg23g2g23t2r32r2353tgewsdfweg34t342rftg23g2g23t2r32r2353tgewsdfweg34t342rftg23g2g23t2r32r2353tgewsdfweg34t342rftg23g2g23t2r32r"
+  default = ""
 }
